@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IELTS Test Library — The Foreign Express</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head><body>
+<div id="site-header"></div>
+<div class="pagehead"><div class="container">
+  <h1>IELTS Test Library</h1>
+  <p>Express original Academic mock sets — Listening (with real audio), Reading (highlight + navigator) and Writing (AI-evaluated). Practice Mode with AI hints, or strict Exam Simulation.</p>
+</div></div>
+<section class="section" style="padding-top:36px"><div class="container">
+  <div class="tabs">
+    <div class="tab on" onclick="mtTab('Full',this)">📕 Full Tests</div>
+    <div class="tab" onclick="mtTab('L&R',this)">🎧📖 Listening & Reading</div>
+    <div class="tab" onclick="mtTab('Writing',this)">✍ Writing Tests</div>
+  </div>
+  <div class="grid-3" id="mtGrid"></div>
+  <div class="note">🧪 <b>Demo:</b> FE-11 Test 1 is fully playable (Reading · Listening with audio · Writing). Sets 12–14 content is being authored — locked for now. Practice Mode = AI hints on · Exam Mode = strict timer, no hints.</div>
+</div></section>
+<div id="site-footer"></div><div id="toast"></div>
+<script src="js/app.js"></script><script src="js/tests-data.js"></script>
+<script>
+function mtTab(skill,el){
+  document.querySelectorAll('#pageTabs,.tabs .tab').forEach(t=>t.classList.remove('on'));el.classList.add('on');
+  const prog=FE.progress();let html='';
+  Object.values(FE_TESTS).filter(t=>skill==='Full'?t.skill==='Full':t.skill===skill||(skill==='L&R'&&(t.skill==='Listening'||t.skill==='Reading'))).forEach(t=>{
+    const p=prog[t.id]||0;
+    html+=`<div class="tcard"><b>${t.name}</b><span class="tm">⏱ ${t.mins} min · ${t.skill}</span>
+    <div><div class="pbar"><i style="width:${p}%"></i></div><span class="tm">${p}% complete</span></div>
+    <div style="display:flex;gap:8px"><a class="btn btn-o btn-sm" style="flex:1;text-align:center" href="test.html?id=${t.id}&mode=practice">Practice</a>
+    <a class="btn btn-out btn-sm" style="flex:1;text-align:center" href="test.html?id=${t.id}&mode=exam">Exam Mode</a></div></div>`;});
+  FE_SOON.filter(t=>skill==='Full'?t.skill==='Full':t.skill===skill||(skill==='L&R'&&(t.skill==='Listening'||t.skill==='Reading'))).forEach(t=>{
+    html+=`<div class="tcard locked"><b>🔒 ${t.name}</b><span class="tm">⏱ — · Content being authored</span><button class="btn btn-out btn-sm" onclick="FE.toast('🔒 This set is being added. Set 11 Test 1 is fully playable!')">Take Test</button></div>`;});
+  document.getElementById('mtGrid').innerHTML=html;
+}
+mtTab('Full',document.querySelector('.tabs .tab'));
+</script></body></html>

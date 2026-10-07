@@ -1,0 +1,552 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IELTS — The Foreign Express</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body>
+<div id="site-header"></div>
+<section class="hero" style="padding:54px 0"><div class="container" style="text-align:center;max-width:840px">
+  <span style="background:rgba(255,255,255,.12);padding:5px 16px;border-radius:20px;font-size:13px;font-weight:600">IELTS | Powered by AI</span>
+  <h1 style="font-size:37px;margin:18px 0 12px">Practice IELTS Online with a<br>Real Computer-Based Interface</h1>
+  <p class="sub" style="max-width:620px;margin:0 auto 24px">Express Academic mock sets · Instant AI scoring · Practice Mode with AI support · strict Exam Simulation Mode.</p>
+  <a href="diagnostic.html"><button class="btn btn-o" style="padding:14px 30px">Start Free Diagnostic</button></a>
+  <a href="tests.html"><button class="btn btn-out" style="border-color:#fff;color:#fff;background:transparent">Take a Mock Test</button></a>
+</div></section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IELTS Online Tests Academic — The Foreign Express</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ===== LEXIPREP-STYLE PAGE CSS (page-specific) ===== */
+.lx-hero{background:linear-gradient(160deg,#E9FBF4 0%,#D7F6EC 45%,#CFF3F0 100%);padding:64px 0 84px;position:relative;overflow:hidden}
+.lx-hero .container{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center;position:relative;z-index:2}
+.lx-crumb{font-size:13px;color:#0F766E;font-weight:600;margin-bottom:14px}
+.lx-crumb b{color:#0B1220}
+.lx-h1{font-family:'Poppins';font-size:40px;font-weight:800;color:#0B1220;line-height:1.2;margin-bottom:18px}
+.lx-hl{background:linear-gradient(transparent 18%,#FFE14D 18% 92%,transparent 92%);padding:0 6px;border-radius:4px}
+.lx-chip-a{display:inline-block;background:#0B1220;color:#fff;font-size:15px;font-weight:700;padding:5px 14px;border-radius:8px;margin-left:8px;vertical-align:middle}
+.lx-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.lx-pill{background:#fff;border:1px solid #CBEBDD;border-radius:20px;font-size:12.5px;font-weight:600;color:#134E4A;padding:6px 13px;display:inline-flex;align-items:center;gap:6px}
+.lx-pill i{width:6px;height:6px;border-radius:50%;background:#0D9488;display:inline-block}
+.lx-desc{color:#33544E;font-size:15px;max-width:520px;margin-bottom:24px}
+.lx-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.btn-teal{background:#0F766E;color:#fff}.btn-teal:hover{background:#0B5D57}
+.btn-white{background:#fff;color:#0B1220;border:1.5px solid #D5E7DF}.btn-white:hover{border-color:#0F766E;color:#0F766E}
+/* hero mock */
+.lx-mock-wrap{position:relative}
+.lx-mock{background:#fff;border-radius:14px;box-shadow:0 30px 60px rgba(11,82,74,.18);display:grid;grid-template-columns:1.15fr .95fr;overflow:hidden;border:1px solid #E3F0EA}
+.lx-mock .m-left{padding:18px;border-right:1px solid #EEF4F1;font-size:11.5px;color:#4B5F5A}
+.lx-mock .m-line{background:#F2F7F5;border-radius:5px;height:9px;margin-bottom:9px}
+.lx-mock .m-line.w80{width:80%}.lx-mock .m-line.w60{width:60%}.lx-mock .m-line.w90{width:90%}
+.lx-mock .m-hl{background:#A7F3D0;border-radius:4px;color:#065F46;padding:5px 8px;font-weight:600;margin-bottom:10px;font-size:11px}
+.lx-mock .m-ans{display:flex;align-items:center;gap:8px;margin-top:12px}
+.lx-mock .m-ans input{flex:1;border:1.5px solid #14B8A6;border-radius:7px;padding:7px 10px;font-size:12px;color:#0F766E;font-weight:700}
+.lx-mock .m-right{padding:18px;font-size:11.5px;color:#334155}
+.lx-mock .m-right h6{font-size:12px;color:#0B1220;margin-bottom:8px}
+.lx-mock .m-right ul{list-style:none;margin-bottom:12px}
+.lx-mock .m-right li{padding:3px 0 3px 14px;position:relative;color:#475569}
+.lx-mock .m-right li:before{content:'•';position:absolute;left:2px;color:#0D9488}
+.lx-mock .m-ask{display:flex;gap:8px;align-items:center;border-top:1px dashed #E2E8F0;padding-top:10px}
+.lx-mock .m-ask input{flex:1;border:none;outline:none;font-size:12px;color:#0B1220}
+.lx-send{width:30px;height:30px;border-radius:50%;background:#6D28D9;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.lx-cap{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);background:#0B1220;color:#fff;font-size:11.5px;font-weight:600;padding:6px 16px;border-radius:8px;white-space:nowrap;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.lx-side{position:absolute;right:-64px;top:20px;bottom:20px;width:52px;background:#0B1220;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center}
+.lx-side span{color:#5EEAD4;font-size:11px;font-weight:800;writing-mode:vertical-rl;letter-spacing:1px}
+.lx-dots{display:flex;gap:7px;justify-content:center;margin-top:34px;align-items:center}
+.lx-dot{width:8px;height:8px;border-radius:50%;background:#B9D9CE;cursor:pointer}
+.lx-dot.on{background:#0F766E;width:22px;border-radius:6px}
+.lx-arrows{display:flex;gap:10px;margin-left:26px}
+.lx-arr{width:34px;height:34px;border-radius:50%;border:1.5px solid #0F766E;color:#0F766E;background:transparent;cursor:pointer;font-size:14px}
+.lx-arr.fill{background:#0F766E;color:#fff}
+/* library */
+.lx-sec{padding:72px 0}
+.lx-sec.alt{background:#F4FBF8}
+.lx-h2{text-align:center;font-family:'Poppins';font-size:30px;font-weight:800;color:#0B1220;margin-bottom:10px}
+.lx-h2 .u{background:linear-gradient(transparent 78%,#2DD4BF 78% 94%,transparent 94%);padding:0 4px}
+.lx-h2 .hl{background:linear-gradient(transparent 18%,#FFE14D 18% 92%,transparent 92%);padding:0 5px;border-radius:4px}
+.lx-sub{text-align:center;color:#5B7470;font-size:14.5px;margin-bottom:42px}
+.lx-group{background:#fff;border:1px solid #E2EFE9;border-radius:16px;padding:22px;margin-bottom:20px;box-shadow:0 4px 14px rgba(11,82,74,.05)}
+.lx-group h4{font-family:'Poppins';font-size:16px;color:#0B1220;margin-bottom:16px}
+.lx-g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lx-tcard{border-radius:12px;padding:16px 14px;text-align:center;border:1.5px solid;background:#fff}
+.lx-tcard.li{border-color:#BFDBFE}.lx-tcard.rd{border-color:#A7F3D0}.lx-tcard.wr{border-color:#FED7AA}
+.lx-badge{width:30px;height:30px;border-radius:8px;color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:'Poppins'}
+.lx-tcard.li .lx-badge{background:#1868DB}.lx-tcard.rd .lx-badge{background:#0B9D58}.lx-tcard.wr .lx-badge{background:#C65418}
+.lx-tcard b{display:block;font-size:13px;color:#0B1220;margin-bottom:6px}
+.lx-pct{font-size:12px;color:#94A3B8;margin-bottom:10px}
+.lx-take{display:block;width:100%;border:none;color:#fff;font-weight:700;font-size:13px;padding:9px 0;border-radius:8px;cursor:pointer;font-family:'Inter';transition:.2s}
+.lx-take:hover{filter:brightness(.92)}
+.lx-tcard.li .lx-take{background:#1868DB}.lx-tcard.rd .lx-take{background:#0B9D58}.lx-tcard.wr .lx-take{background:#C65418}
+.lx-tools{display:flex;gap:10px;justify-content:center;margin-top:10px;color:#B7C6C1;font-size:13px}
+.lx-tcard.locked{opacity:.62}
+.lx-tcard.locked .lx-take{background:#94A3B8}
+.lx-pager{display:flex;gap:8px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.lx-pg{width:36px;height:36px;border-radius:9px;border:1.5px solid #D8E6E0;background:#fff;font-weight:700;font-size:13.5px;cursor:pointer;color:#475569}
+.lx-pg.on{background:#0B1220;color:#fff;border-color:#0B1220}
+/* split sections */
+.lx-split{display:grid;grid-template-columns:1fr 1.1fr;gap:54px;align-items:center}
+.lx-split.rev{grid-template-columns:1.1fr 1fr}
+.lx-h3{font-family:'Poppins';font-size:27px;font-weight:800;color:#0B1220;margin-bottom:14px}
+.lx-ptext{color:#5B7470;font-size:14.5px;margin-bottom:20px}
+.lx-checks{display:flex;flex-wrap:wrap;gap:10px 22px}
+.lx-checks span{font-size:13.5px;font-weight:600;color:#0F172A;display:inline-flex;align-items:center;gap:7px}
+.lx-checks span:before{content:'✓';background:#0D9488;color:#fff;width:16px;height:16px;border-radius:50%;font-size:10px;display:inline-flex;align-items:center;justify-content:center}
+/* interface mock */
+.lx-if{background:#fff;border:1px solid #E2E8F0;border-radius:14px;box-shadow:0 24px 50px rgba(11,82,74,.14);overflow:hidden}
+.lx-if .if-bar{display:flex;justify-content:space-between;align-items:center;background:#0F172A;color:#fff;padding:9px 14px;font-size:11.5px}
+.lx-if .if-bar .rev{background:#0D9488;padding:3px 10px;border-radius:6px;font-weight:700;font-size:10.5px}
+.lx-if .if-body{display:grid;grid-template-columns:1.2fr 1fr;min-height:230px}
+.lx-if .if-src{padding:16px;border-right:1px solid #EEF2F1;font-size:10.5px;color:#4B5F5A;line-height:1.7}
+.lx-if .if-src mark.g{background:#BBF7D0;padding:0 2px}
+.lx-if .if-src mark.y{background:#FEF08A;padding:0 2px}
+.lx-if .if-src mark.b{background:#BFDBFE;padding:0 2px}
+.lx-if .if-q{padding:16px;font-size:10.5px;color:#334155}
+.lx-if .if-q h6{font-size:11.5px;color:#0B1220;margin-bottom:8px}
+.lx-if .if-opt{border:1px solid #E2E8F0;border-radius:6px;padding:6px 9px;margin-bottom:6px;color:#475569}
+.lx-if .if-opt.sel{border-color:#0D9488;background:#F0FDFA}
+.lx-if .if-parts{display:flex;border-top:1px solid #E2E8F0;font-size:10.5px}
+.lx-if .if-parts div{flex:1;padding:8px;text-align:center;color:#64748B;border-right:1px solid #E2E8F0}
+.lx-if .if-parts div.on{color:#0F766E;font-weight:700;background:#F0FDFA}
+.lx-caption{margin-top:18px;display:flex;gap:10px;align-items:center}
+.lx-caption .cap{background:#0B1220;color:#fff;font-size:11.5px;font-weight:600;padding:6px 14px;border-radius:8px}
+/* passage + tooltip mock */
+.lx-passage-mock{background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:22px;font-size:12px;color:#4B5F5A;line-height:1.8;box-shadow:0 18px 40px rgba(11,82,74,.12);position:relative}
+.lx-passage-mock mark{background:#99F6E4;padding:1px 3px;border-radius:3px}
+.lx-tip{position:absolute;right:14px;top:38%;background:#0B1220;color:#fff;font-size:10.5px;padding:6px 12px;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.lx-tip b{color:#5EEAD4}
+/* authentic dark card */
+.lx-dark{background:linear-gradient(135deg,#1E1B4B,#312E81 55%,#1E1B4B);border-radius:16px;min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;box-shadow:0 24px 50px rgba(30,27,75,.35)}
+.lx-dark .ic{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;border:1px solid rgba(255,255,255,.2)}
+.lx-dark small{color:#C7D2FE;font-size:12.5px;font-weight:600;margin-bottom:6px}
+.lx-dark h4{font-family:'Poppins';font-size:22px;font-weight:800}
+/* answer key mock */
+.lx-ak{background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:22px;box-shadow:0 18px 40px rgba(11,82,74,.12);font-size:12.5px;color:#334155}
+.lx-ak .q{font-weight:700;color:#0B1220;margin-bottom:8px}
+.lx-ak .kw{color:#0D9488;font-weight:600;margin-bottom:10px}
+.lx-ak .exp{color:#64748B}
+.lx-ak .parts{display:flex;gap:10px;margin-top:14px}
+.lx-ak .parts span{flex:1;background:#F1F5F9;border-radius:7px;padding:7px;text-align:center;font-size:11px;color:#475569;font-weight:600}
+/* two modes */
+.lx-modes{display:grid;grid-template-columns:1fr 1.1fr 1.1fr;gap:22px;align-items:center}
+.lx-mode{background:#fff;border:1px solid #DCEEE6;border-radius:16px;padding:28px 24px;box-shadow:0 10px 26px rgba(11,82,74,.08)}
+.lx-mode .mic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px;background:#E6FBF4}
+.lx-mode h4{font-family:'Poppins';font-size:18px;color:#0B1220;margin-bottom:10px}
+.lx-mode p{font-size:13.5px;color:#5B7470;margin-bottom:16px}
+.lx-chips{display:flex;flex-wrap:wrap;gap:8px}
+.lx-chip{border:1px solid #CBE9DD;border-radius:20px;font-size:11.5px;font-weight:600;color:#0F766E;padding:5px 12px;display:inline-flex;align-items:center;gap:5px}
+.lx-chip:before{content:'+';font-weight:800}
+.lx-modes-title{text-align:center;font-family:'Poppins';font-size:24px;font-weight:800;color:#0B1220;line-height:1.35}
+/* benefits */
+.lx-ben{display:grid;grid-template-columns:1fr 1fr;gap:34px 54px;max-width:920px;margin:0 auto}
+.lx-ben .b{display:flex;gap:16px}
+.lx-ben .bic{width:44px;height:44px;border-radius:12px;background:#E6FBF4;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.lx-ben h5{font-family:'Poppins';font-size:15.5px;color:#0B1220;margin-bottom:6px}
+.lx-ben p{font-size:13.5px;color:#5B7470}
+/* stats */
+.lx-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:920px;margin:0 auto}
+.lx-stat{background:#fff;border:1px solid #E2EFE9;border-radius:16px;text-align:center;padding:34px 20px}
+.lx-stat .sic{width:46px;height:46px;border-radius:50%;background:#E6FBF4;color:#0D9488;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 14px}
+.lx-stat b{font-family:'Poppins';font-size:30px;color:#0B1220;display:block}
+.lx-stat span{font-size:13px;color:#5B7470}
+/* laptop experience */
+.lx-exp{max-width:960px;margin:0 auto;position:relative;padding:20px 0}
+.lx-exp-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:34px;align-items:center}
+.lx-exp .ef{margin-bottom:34px}
+.lx-exp .ef:last-child{margin-bottom:0}
+.lx-exp .ef .eic{width:40px;height:40px;border-radius:11px;background:#E6FBF4;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+.lx-exp .ef h5{font-family:'Poppins';font-size:15px;color:#0B1220;margin-bottom:6px}
+.lx-exp .ef p{font-size:12.5px;color:#5B7470}
+.lx-exp .ef.right{text-align:left}
+.lx-laptop{width:340px}
+.lx-laptop .screen{background:#0F172A;border-radius:14px 14px 0 0;padding:12px 12px 16px;box-shadow:0 30px 60px rgba(11,82,74,.25)}
+.lx-laptop .scr-in{background:#fff;border-radius:8px;height:190px;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lx-laptop .ln{background:#F1F5F9;border-radius:4px;height:8px;margin-bottom:7px}
+.lx-laptop .ln.hl{background:#99F6E4}
+.lx-laptop .base{height:12px;background:#334155;border-radius:0 0 14px 14px;margin:0 -18px}
+.lx-exp-cta{display:flex;gap:14px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+/* testimonials */
+.lx-tst{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:960px;margin:0 auto}
+.lx-quote{background:#fff;border:1px solid #E2EFE9;border-radius:16px;padding:28px;box-shadow:0 10px 26px rgba(11,82,74,.06)}
+.lx-stars{color:#F59E0B;letter-spacing:2px;margin-bottom:12px;font-size:15px}
+.lx-quote p{font-size:14px;color:#334155;margin-bottom:18px}
+.lx-quote .who{display:flex;gap:12px;align-items:center}
+.lx-avat{width:44px;height:44px;border-radius:50%;background:#0D9488;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Poppins';font-size:14px}
+.lx-quote .who b{color:#0B1220;font-size:14px;display:block}
+.lx-quote .who span{font-size:12px;color:#64748B}
+.lx-tst-nav{display:flex;justify-content:center;gap:14px;margin-top:26px;align-items:center}
+/* faq */
+.lx-faq{max-width:760px;margin:0 auto}
+.lx-faq details{background:#fff;border:1px solid #E2EFE9;border-radius:12px;margin-bottom:12px;overflow:hidden}
+.lx-faq summary{padding:17px 22px;font-weight:700;color:#0B1220;cursor:pointer;font-size:14.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.lx-faq summary:after{content:'⌄';font-size:18px;color:#0D9488;transition:.2s}
+.lx-faq details[open] summary:after{transform:rotate(180deg)}
+.lx-faq .fab{padding:0 22px 18px;font-size:14px;color:#5B7470}
+@media(max-width:960px){
+.lx-hero .container,.lx-split,.lx-split.rev{grid-template-columns:1fr}
+.lx-g3,.lx-modes,.lx-stats,.lx-ben,.lx-tst{grid-template-columns:1fr}
+.lx-modes-title{text-align:left}
+.lx-exp-grid{grid-template-columns:1fr}
+.lx-laptop{margin:0 auto}
+.lx-side{display:none}
+.lx-h1{font-size:30px}
+}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- ============ HERO ============ -->
+<section class="lx-hero">
+  <div class="container">
+    <div>
+      <div class="lx-crumb"><b>Express</b> for IELTS <span style="color:#94A3B8">|</span> Powered by AI</div>
+      <h1 class="lx-h1"><span class="lx-hl">Express IELTS Online</span><br>Tests <span class="lx-chip-a">Academic</span></h1>
+      <div class="lx-pills">
+        <span class="lx-pill"><i></i> Practice with AI</span>
+        <span class="lx-pill"><i></i> Computer-Based Format</span>
+        <span class="lx-pill"><i></i> Listening</span>
+        <span class="lx-pill"><i></i> Reading</span>
+        <span class="lx-pill"><i></i> Writing</span>
+        <span class="lx-pill"><i></i> Answer Keys</span>
+        <span class="lx-pill"><i></i> Instant Scoring</span>
+      </div>
+      <p class="lx-desc">Free IELTS online practice tests with Express Academic collections. Experience the real computer-based exam and get instant scores.</p>
+      <div class="lx-cta">
+        <a href="#library"><button class="btn btn-teal" style="padding:13px 28px">Take Test Now</button></a>
+        <a href="#interface"><button class="btn btn-white" style="padding:13px 28px">Learn More</button></a>
+      </div>
+      <div class="lx-dots">
+        <span class="lx-dot on" onclick="heroSlide(0,this)"></span>
+        <span class="lx-dot" onclick="heroSlide(1,this)"></span>
+        <span class="lx-dot" onclick="heroSlide(2,this)"></span>
+        <span class="lx-arrows">
+          <button class="lx-arr" onclick="heroStep(-1)">←</button>
+          <button class="lx-arr fill" onclick="heroStep(1)">→</button>
+        </span>
+      </div>
+    </div>
+
+    <div class="lx-mock-wrap">
+      <div class="lx-mock">
+        <div class="m-left">
+          <div class="m-line w90"></div><div class="m-line"></div><div class="m-line w80"></div>
+          <div class="m-hl">could use methane from plants and…</div>
+          <div class="m-line w60"></div><div class="m-line w90"></div><div class="m-line"></div>
+          <div class="m-ans"><span style="font-size:11px;color:#64748B">Vertical farms would need</span><input readonly value="4"></div>
+        </div>
+        <div class="m-right">
+          <h6>✦ I can help you with:</h6>
+          <ul>
+            <li>Tips and strategies for reading tasks</li>
+            <li>Paragraph summaries</li>
+            <li>Definitions of difficult words (with highlights)</li>
+            <li>Per-question hints and guidance</li>
+          </ul>
+          <div class="m-ask"><span>Do you need any help with this part?</span><span class="lx-send">➤</span></div>
+          <div style="border-top:1px dashed #E2E8F0;margin-top:10px;padding-top:8px;color:#94A3B8;font-size:10px">Show me the…</div>
+        </div>
+      </div>
+      <span class="lx-cap" id="heroCap">IELTS Reading AI Assistant</span>
+      <div class="lx-side"><span>EXPRE…</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEST LIBRARY ============ -->
+<section class="lx-sec" id="library">
+  <div class="container">
+    <h2 class="lx-h2">Express <span class="u">IELTS</span> Academic Test Library</h2>
+    <p class="lx-sub">Express English IELTS Academic 11–19 test collections for three skills.</p>
+    <div id="libGroups"></div>
+    <div class="lx-pager" id="libPager"></div>
+  </div>
+</section>
+
+<!-- ============ REAL TEST INTERFACE ============ -->
+<section class="lx-sec alt" id="interface">
+  <div class="container lx-split">
+    <div>
+      <h3 class="lx-h3">Practice Express IELTS on Real Test Interface</h3>
+      <p class="lx-ptext">The Foreign Express helps you practice IELTS online at home with Express Academic test sets, and quickly get used to the computer-based IELTS interface for Listening, Reading, and Writing — designed to look 80–90% similar to the real IELTS test.</p>
+      <div class="lx-checks">
+        <span>Realistic test interface</span><span>Highlight tool</span>
+        <span>Note-taking tool</span><span>Question navigation bar</span>
+      </div>
+    </div>
+    <div>
+      <div class="lx-if">
+        <div class="if-bar"><span>📑 Express/11 Reading Test 1 AC</span><span style="display:flex;gap:8px;align-items:center">🔊 📝 <span class="rev">Review ▸</span></span></div>
+        <div class="if-body">
+          <div class="if-src">
+            <b>The Green Revolution</b><br>
+            A new advantage rises in the view on human beings seems well-crafted. There has been been a <mark class="y">controversial discussion</mark> on human beings are essentially different from other species. Writers apparently think, when comparing agents each other for <mark class="g">executive behaviour</mark>.<br><br>
+            This view sees all of human nature as uniquely associated with the scores were found in these two <mark class="b">studies in humans</mark>. The point of this view is not that humans will, and helped to justify — the complete pessimistic optimising critics that was so widespread in the first half of this century.
+          </div>
+          <div class="if-q">
+            <h6>Questions 27–30</h6>
+            <div style="margin-bottom:8px">27. What is the writer's doing in the first paragraph?</div>
+            <div class="if-opt">✓ Justifying the opinion that human nature is greatly affected by the environment</div>
+            <div class="if-opt">Describing a process involved in human behaviour</div>
+            <div class="if-opt">Explaining why this view that human act in a selfish manner</div>
+          </div>
+        </div>
+        <div class="if-parts">
+          <div>Part 1 : 0 of 13 questions</div><div class="on">Part 2 : 0 of 13 questions</div><div>Part 3 : 0 of 14 questions</div>
+        </div>
+      </div>
+      <div class="lx-caption"><span class="cap">IELTS Reading Online Test Interface</span>
+        <span class="lx-dots" style="margin:0"><span class="lx-dot on"></span><span class="lx-dot"></span><span class="lx-dot"></span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AI ASSISTANT ============ -->
+<section class="lx-sec">
+  <div class="container lx-split rev">
+    <div>
+      <div class="lx-passage-mock">
+        The supporters of vertical farming claim many potential advantages for the system. For instance, crops would be produced all year round, as they would be kept in artificially controlled, optimum growing conditions.<br><br>
+        <mark>There would be no weather-related crop failures due to droughts or floods.</mark>
+        <span class="lx-tip">🤖 <b>LexiBot-style hint:</b> All the food could be grown organically…</span>
+        All the food could be grown organically, eliminating the need for herbicides, pesticides and fertilisers.
+      </div>
+    </div>
+    <div>
+      <span class="pill" style="background:#E6FBF4;color:#0F766E">Powered by AI ✦</span>
+      <h3 class="lx-h3" style="margin-top:12px">Practice Express IELTS Tests with AI Assistant</h3>
+      <p class="lx-ptext">You're no longer studying alone.<br>The Foreign Express integrates an AI Assistant directly into the IELTS Listening, Reading, and Writing test interface. The AI interacts with you during your practice, offering tips, test strategies, explanations, and keyword highlights to help you understand every "why" behind each answer.</p>
+      <div class="lx-checks">
+        <span>Step-by-step explanations</span><span>Keyword highlighting</span>
+        <span>Test strategies and tips</span><span>Instant vocabulary definitions</span>
+        <span>24/7 Q&amp;A support</span><span>Support for 180+ languages</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTHENTIC SETS ============ -->
+<section class="lx-sec alt">
+  <div class="container lx-split">
+    <div>
+      <h3 class="lx-h3">Practice with Authentic Express IELTS Test Sets</h3>
+      <p class="lx-ptext">The Express IELTS Academic test sets on The Foreign Express are carefully compiled from official-style sources. They reflect the real exam's difficulty and question styles, ensuring the most authentic practice experience possible.</p>
+      <div class="lx-checks" style="flex-direction:column;align-items:flex-start;gap:12px">
+        <span>Express IELTS Listening Academic</span>
+        <span>Express IELTS Reading Academic</span>
+        <span>Express IELTS Writing Academic</span>
+      </div>
+    </div>
+    <div class="lx-dark">
+      <div class="ic">🏛</div>
+      <small>Test Collections</small>
+      <h4>Express English IELTS</h4>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANSWER KEYS ============ -->
+<section class="lx-sec">
+  <div class="container lx-split rev">
+    <div>
+      <div class="lx-ak">
+        <div class="q">Question: Vertical farms could use methane from plants and produce __________</div>
+        <div class="kw">Key words: methane, produce</div>
+        <div class="exp">Based on the question and particularly the key words, we need informal info about how methane is used. "Methane is a method of creating energy: in this paragraph. The paragraph says 'Although we consume energy, it would return energy to the grid via methane composting non-edible parts of plants'."</div>
+        <div class="parts"><span>Part 1 : 0 of 13 questions</span><span>Part 2 : 0 of 13 questions</span></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="lx-h3">Complete Answer Keys with Clear Explanations</h3>
+      <p class="lx-ptext">Each test comes with complete answer keys, detailed explanations, and highlighted keywords. AI-powered explanations and support — coming soon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TWO MODES ============ -->
+<section class="lx-sec alt">
+  <div class="container">
+    <div class="lx-modes">
+      <div class="lx-modes-title">Practice Express IELTS With Two Modes</div>
+      <div class="lx-mode">
+        <div class="mic">✏️</div>
+        <h4>Practice Mode with AI</h4>
+        <p>Practice Express IELTS Academic test with adjustable timing and full AI support.</p>
+        <div class="lx-chips"><span class="lx-chip">Adjustable time limit</span><span class="lx-chip">AI assistant</span><span class="lx-chip">Practice at your own pace</span></div>
+      </div>
+      <div class="lx-mode">
+        <div class="mic">🕐</div>
+        <h4>Exam Simulation Mode</h4>
+        <p>Experience the Express IELTS Academic test under real exam conditions.</p>
+        <div class="lx-chips"><span class="lx-chip">Fixed exam time</span><span class="lx-chip">No help or hints</span><span class="lx-chip">Real test pressure</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 BENEFITS ============ -->
+<section class="lx-sec">
+  <div class="container">
+    <h2 class="lx-h2">4 Key Benefits of Practicing Express IELTS with The Foreign Express</h2>
+    <p class="lx-sub" style="margin-bottom:44px"></p>
+    <div class="lx-ben">
+      <div class="b"><div class="bic">⚡</div><div><h5>Get Your IELTS Score Instantly</h5><p>The Foreign Express automatically scores your test upon submission, helping you evaluate your performance right away.</p></div></div>
+      <div class="b"><div class="bic">🤖</div><div><h5>Self-Study Effectively with AI</h5><p>Reduce dependence on tutors and practice independently with an AI assistant specialized in IELTS Listening, Reading, and Writing.</p></div></div>
+      <div class="b"><div class="bic">📊</div><div><h5>Track Your IELTS Progress</h5><p>Review your performance and band score improvements through a personalized learning dashboard.</p></div></div>
+      <div class="b"><div class="bic">🚀</div><div><h5>Improve 1.5–2.0 Bands Overall</h5><p>Thousands of learners have improved their IELTS Academic scores by 1.5–2.0 bands within three months.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="lx-sec alt" style="padding:56px 0">
+  <div class="container">
+    <div class="lx-stats">
+      <div class="lx-stat"><div class="sic">👤</div><b>50,000+</b><span>Monthly Active Users</span></div>
+      <div class="lx-stat"><div class="sic">🌏</div><b>180+</b><span>Countries</span></div>
+      <div class="lx-stat"><div class="sic">📝</div><b>235,000+</b><span>Online IELTS Tests Taken</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALL-NEW EXPERIENCE (LAPTOP) ============ -->
+<section class="lx-sec">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:14px;font-size:13.5px;font-weight:700;color:#0B1220">Computer-based Interface × Practice with AI ✦</div>
+    <h2 class="lx-h2" style="max-width:620px;margin:0 auto 12px">An All-New IELTS Online Practice &amp; Mock Test Experience</h2>
+    <p class="lx-sub">The Foreign Express brings you the closest simulation to the real IELTS exam, enhanced with AI technology.</p>
+
+    <div class="lx-exp">
+      <div class="lx-exp-grid">
+        <div>
+          <div class="ef"><div class="eic">🧪</div><h5>Evaluate your level before the real exam</h5><p>Get an accurate assessment of your ability, know when you're truly ready, and avoid wasting money or missing your target score.</p></div>
+          <div class="ef"><div class="eic">🕐</div><h5>Experience real exam pressure</h5><p>Take mock tests under strict timing with authentic, reliable test sets at the same difficulty as the actual IELTS exam.</p></div>
+        </div>
+        <div class="lx-laptop">
+          <div class="screen"><div class="scr-in">
+            <div><div class="ln hl" style="width:70%"></div><div class="ln"></div><div class="ln w80"></div><div class="ln" style="width:60%"></div><div class="ln hl" style="width:50%"></div></div>
+            <div><div class="ln hl" style="width:60%"></div><div class="ln" style="width:80%"></div><div class="ln"></div><div class="ln" style="width:55%"></div><div class="ln"></div></div>
+          </div></div>
+          <div class="base"></div>
+        </div>
+        <div>
+          <div class="ef right"><div class="eic">💻</div><h5>Familiarize yourself with the test interface</h5><p>Practice with a computer-based test interface and exam format similar to the official IELTS, so you won't be surprised on test day.</p></div>
+          <div class="ef right"><div class="eic">🚀</div><h5>Boost your band score with AI support</h5><p>AI provides guidance and feedback in practice mode, including automated Writing evaluation (coming soon).</p></div>
+        </div>
+      </div>
+      <div class="lx-exp-cta">
+        <a href="tests.html"><button class="btn btn-n">Take Full Tests by Set</button></a>
+        <a href="tests.html"><button class="btn btn-white">Take Skill-Based Tests →</button></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="lx-sec alt">
+  <div class="container">
+    <h2 class="lx-h2">Feedback from Early Users</h2>
+    <p class="lx-sub">Comments from some of the first 10,000 learners at The Foreign Express.</p>
+    <div class="lx-tst" id="tstBox"></div>
+    <div class="lx-tst-nav">
+      <button class="lx-arr" onclick="tstStep(-1)">←</button>
+      <span class="lx-dots" style="margin:0" id="tstDots"></span>
+      <button class="lx-arr fill" onclick="tstStep(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="lx-sec">
+  <div class="container">
+    <h2 class="lx-h2">FAQs – Frequently Asked Questions</h2>
+    <p class="lx-sub">Answers to common questions about the Express IELTS Academic practice test sets.</p>
+    <div class="lx-faq">
+      <details open><summary>What is the Express IELTS Academic practice test set and where does it come from?</summary><div class="fab">The Express IELTS Academic practice test set is compiled in the style of the official Cambridge book series. Each set contains multiple tests covering Listening, Reading and Writing, reflecting actual past exam difficulty and question styles. It is a trusted, closely aligned source widely recommended by the IELTS community for effective practice.</div></details>
+      <details><summary>Which skills are included in the Express IELTS Academic test set?</summary><div class="fab">Each set includes three skills: Listening (30 min, 40 questions), Reading (60 min, 40 questions) and Writing (60 min, Task 1 + Task 2). Full Tests combine all three in one sitting, just like the real computer-based exam.</div></details>
+      <details><summary>Why can't I find the IELTS Speaking practice in the test library?</summary><div class="fab">Speaking is assessed face-to-face and cannot be part of a written test set. That's why we built a dedicated AI Speaking Room — an AI examiner asks Parts 1–3 questions and scores you on all four criteria. <a href="speaking-ai.html" style="color:var(--orange);font-weight:700">Try the AI Speaking Room →</a></div></details>
+      <details><summary>Is the difficulty of the Express Academic test set equivalent to the real exam?</summary><div class="fab">Yes. The sets are authored to match the official exam's difficulty band and question-type distribution, so your mock scores are a reliable indicator of your real performance level (±0.5 band).</div></details>
+      <details><summary>What is the difference between IELTS Academic and General Training test sets?</summary><div class="fab">Academic is for university admission — Reading passages are academic in nature and Writing Task 1 is a graph/chart description. General Training is for migration/work — Reading uses everyday texts and Task 1 is a letter. The Foreign Express currently offers Academic sets; General Training is coming soon.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<div class="ctastrip"><div class="container">
+  <h2>You're no longer studying alone.</h2>
+  <p style="margin-bottom:20px;opacity:.95">Take the 15-minute diagnostic and get your Band Report today.</p>
+  <a href="diagnostic.html"><button class="btn" style="background:#fff;color:var(--orange);padding:14px 32px">Get My Band Report</button></a>
+</div></div>
+
+<div id="site-footer"></div>
+<div id="toast"></div>
+
+<script src="js/app.js"></script>
+<script>
+/* ================= HERO SLIDES ================= */
+const HERO_CAPS=['IELTS Reading AI Assistant','IELTS Listening Online Test Interface','IELTS Writing Online Test Interface'];
+let hIdx=0;
+function heroSlide(i,el){hIdx=i;document.getElementById('heroCap').textContent=HERO_CAPS[i];
+  document.querySelectorAll('.lx-hero .lx-dot').forEach((d,di)=>d.classList.toggle('on',di===i));}
+function heroStep(d){hIdx=(hIdx+d+3)%3;heroSlide(hIdx,document.querySelectorAll('.lx-hero .lx-dot')[hIdx]);}
+
+/* ================= TEST LIBRARY (grouped + paginated) ================= */
+const GROUPS=[];
+/* Live set — real playable tests */
+GROUPS.push({title:'Express Academic 11 - Test 1',items:[
+  {id:'L-11-1',skill:'li',name:'E11 Listening Test 1 AC',live:true},
+  {id:'R-11-1',skill:'rd',name:'E11 Reading Test 1 AC',live:true},
+  {id:'W-11-1',skill:'wr',name:'E11 Writing Test 1 AC',live:true}]});
+/* Locked sets */
+for(let t=2;t<=4;t++)GROUPS.push({title:`Express Academic 11 - Test ${t}`,items:[
+  {skill:'li',name:`E11 Listening Test ${t} AC`},{skill:'rd',name:`E11 Reading Test ${t} AC`},{skill:'wr',name:`E11 Writing Test ${t} AC`}]});
+[12,13,14].forEach(s=>[1,2].forEach(t=>GROUPS.push({title:`Express Academic ${s} - Test ${t}`,items:[
+  {skill:'li',name:`E${s} Listening Test ${t} AC`},{skill:'rd',name:`E${s} Reading Test ${t} AC`},{skill:'wr',name:`E${s} Writing Test ${t} AC`}]},{skill:'wr'})));
+GROUPS.pop(); /* remove accidental dup */
+const PER=5;let libPage=1;
+const prog=FE.progress();
+function renderLib(){
+  const start=(libPage-1)*PER,end=start+PER;
+  document.getElementById('libGroups').innerHTML=GROUPS.slice(start,end).map(g=>`
+  <div class="lx-group"><h4>${g.title}</h4><div class="lx-g3">
+    ${g.items.map(it=>{
+      const p=it.live?Math.min(100,prog[it.id]||0):0;
+      return `<div class="lx-tcard ${it.skill} ${it.live?'':'locked'}">
+        <span class="lx-badge">${it.live?'P':'🔒'}</span>
+        <b>${it.name}</b>
+        <div class="lx-pct">${p}%</div>
+        ${it.live
+          ?`<button class="lx-take" onclick="location.href='test.html?id=${it.id}&mode=practice'">⚡ Take Test</button>`
+          :`<button class="lx-take" onclick="FE.toast('🔒 This set is being authored — E11 Test 1 is fully playable!')">⚡ Take Test</button>`}
+        <div class="lx-tools"><span title="Review">↺</span><span title="Notes">📋</span></div>
+      </div>`}).join('')}
+  </div></div>`).join('');
+  const pages=Math.ceil(GROUPS.length/PER);
+  document.getElementById('libPager').innerHTML=Array.from({length:pages},(_,i)=>
+    `<button class="lx-pg ${i+1===libPage?'on':''}" onclick="libPage=${i+1};renderLib();document.getElementById('library').scrollIntoView({behavior:'smooth'})">${i+1}</button>`).join('');
+}
+renderLib();
+
+/* ================= TESTIMONIALS ================= */
+const TSTS=[
+ {i:'LN',n:'Linh Nguyen',r:'High School Student',t:'"I failed my target earlier this year and now I\'m preparing again. I\'ve taken IELTS on computer before, and the Express interface looks very similar to the real one. Actually, the real test interface is simpler and less nice-looking, so keep that in mind!"'},
+ {i:'TT',n:'Tung Thanh',r:'Marketing Executive',t:'"The Express × AI combo for Writing scoring really impressed me. I just hope the platform integrates the scoring directly in tests soon, since right now I have to switch between two pages and it\'s inconvenient."'},
+ {i:'PS',n:'Priya Sharma',r:'Band 5.5 → 7.0 · Leeds, UK',t:'"The AI hints in Practice Mode changed everything for me. Every wrong answer came with a \'why\' — six weeks later I jumped a full band in Reading."'},
+ {i:'AK',n:'Arun Kumar',r:'Band 6.0 → 7.5 · TU Munich',t:'"Exam Simulation Mode is the real deal. Fixed timer, audio plays once, no hints. On test day I was calmer than the invigilator."'}];
+let tstPg=0;
+function renderTst(){
+  const pair=TSTS.slice(tstPg*2,tstPg*2+2);
+  document.getElementById('tstBox').innerHTML=pair.map(q=>`
+   <div class="lx-quote"><div class="lx-stars">★★★★★</div><p>${q.t}</p>
+   <div class="who"><span class="lx-avat">${q.i}</span><div><b>${q.n}</b><span>${q.r}</span></div></div></div>`).join('');
+  const pages=Math.ceil(TSTS.length/2);
+  document.getElementById('tstDots').innerHTML=Array.from({length:pages},(_,i)=>`<span class="lx-dot ${i===tstPg?'on':''}" onclick="tstPg=${i};renderTst()" style="cursor:pointer"></span>`).join('');
+}
+function tstStep(d){const pages=Math.ceil(TSTS.length/2);tstPg=(tstPg+d+pages)%pages;renderTst();}
+renderTst();
+</script>
+</body>
+</html>
+
+<div id="site-footer"></div><div id="toast"></div><script src="js/app.js"></script></body></html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Test Player — The Foreign Express</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head><body>
+<div id="site-header"></div>
+<div id="teRoot"></div>
+<div id="site-footer"></div><div id="toast"></div>
+<script src="js/app.js"></script><script src="js/tests-data.js"></script>
+<script>
+const P=new URLSearchParams(location.search),TID=P.get('id'),MODE=P.get('mode')||'practice';
+const T=FE_TESTS[TID];
+const root=document.getElementById('teRoot');
+if(!T){root.innerHTML='<div style="padding:90px 20px;text-align:center"><h2 style="color:var(--navy)">Test not found 😕</h2><p style="color:var(--muted);margin:10px 0 20px">Pick a test from the library.</p><a href="tests.html" class="btn btn-o">Back to Library</a></div>';}
+else{
+const SECS=T.secs.map(id=>FE_SECTIONS[id]);
+let cur=0,tleft=SECS[0].mins*60,timer=null,answers={},done=false,results=[],replays=0,hlOn=false,speaking=false,paused=false;
+const totalQs=()=>SECS.reduce((n,s)=>n+(s.type==='writing'?1:s.questions.length),0);
+
+function intro(){
+  root.innerHTML=`<div style="padding:70px 20px;text-align:center;max-width:640px;margin:0 auto">
+  <span class="pill">${MODE==='exam'?'🎯 EXAM SIMULATION':'🛠 PRACTICE MODE — AI ON'}</span>
+  <h1 style="color:var(--navy);font-size:30px;margin:16px 0 8px">${T.name}</h1>
+  <p style="color:var(--muted);margin-bottom:6px">${SECS.length} section${SECS.length>1?'s':''} · total ${T.mins} minutes · ${totalQs()} questions</p>
+  <p style="color:var(--muted);font-size:14px;margin-bottom:26px">${MODE==='exam'?'Fixed timing, no hints, no help — real exam pressure.':'Adjustable pace with AI hints and transcript access. Take your time and learn the "why".'}</p>
+  ${SECS.map((s,i)=>`<div class="card" style="text-align:left;margin-bottom:10px;display:flex;justify-content:space-between"><b>${i+1}. ${s.title}</b><span class="tm" style="color:var(--muted);font-size:13px">⏱ ${s.mins} min</span></div>`).join('')}
+  <button class="btn btn-o" style="font-size:16px;padding:14px 40px;margin-top:16px" onclick="start()">Start Test →</button>
+  <a href="tests.html" class="btn btn-out" style="margin-left:10px">Exit</a></div>`;
+}
+
+function start(){loadSection(0);}
+
+function startTimer(){
+  clearInterval(timer);
+  timer=setInterval(()=>{tleft--;const el=document.getElementById('teTimer');if(!el)return;
+    const m=Math.floor(tleft/60),s=tleft%60;el.textContent='⏱ '+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    el.classList.toggle('low',tleft<60);
+    if(tleft<=0){clearInterval(timer);FE.toast('⏰ Time up! Auto-submitting…');submitSection(true);}},1000);
+}
+
+function loadSection(i){
+  cur=i;tleft=SECS[i].mins*60;speaking=false;paused=false;replays=0;
+  const s=SECS[i];
+  let src='',qs='';
+  if(s.type==='reading'){
+    src=`<h3 style="color:var(--navy);margin-bottom:14px">${s.title}</h3>
+    <div class="lc"><button class="btn btn-out btn-sm" id="hlBtn" onclick="toggleHL()">🖍 Highlighter: OFF</button><button class="btn btn-out btn-sm" onclick="clearHL()">Clear Highlights</button></div><div id="passage">${s.passage}</div>`;
+    qs=s.questions.map((q,qi)=>qHTML(i,qi,q)).join('');
+  }else if(s.type==='listening'){
+    src=`<h3 style="color:var(--navy);margin-bottom:14px">${s.title}</h3>
+    <div class="lc"><button class="btn btn-o btn-sm" id="playBtn" onclick="playListening()">▶ Play Audio</button>
+    <button class="btn btn-out btn-sm" onclick="pauseAudio()" id="pauseBtn">⏸ Pause</button>
+    <button class="btn btn-out btn-sm" onclick="stopAudio()">⏹ Stop</button>
+    ${MODE==='practice'?`<button class="btn btn-out btn-sm" onclick="document.getElementById('transcript').style.display=document.getElementById('transcript').style.display==='none'?'block':'none'">📄 Show/Hide Transcript (practice only)</button>`:''}
+    </div><p class="tm" style="color:var(--muted);font-size:12.5px;margin-bottom:12px">Replays used: <b id="repN">0</b> / ${MODE==='exam'?1:3} · Audio plays like the real exam — take notes while you listen!</p>
+    <div id="transcript" style="display:none">${s.chunks.map((c,ci)=>`<p data-ch="${ci}">${c}</p>`).join('')}</div>`;
+    qs=s.questions.map((q,qi)=>qHTML(i,qi,q)).join('');
+  }else{
+    src=`<h3 style="color:var(--navy);margin-bottom:14px">${s.title}</h3><div class="qb"><b class="qn">Task 2</b><p style="margin-top:10px;color:#475569">${s.prompt}</p></div>`;
+    qs=`<div class="qb"><b class="qn">Your Essay</b>
+    <textarea class="big" id="essay" style="margin-top:12px" placeholder="Start writing your essay here…"></textarea>
+    <div style="display:flex;justify-content:space-between;margin-top:10px"><span style="font-size:13px;color:var(--muted)">Words: <b id="wCount">0</b> (min 250)</span></div></div>`;
+  }
+  root.innerHTML=`
+  <div class="te-top"><span class="tt">✈ ${T.name} — Section ${i+1} of ${SECS.length}</span>
+  <div style="display:flex;gap:10px;align-items:center"><span class="pill" style="background:rgba(255,255,255,.15);color:#fff">${MODE==='exam'?'EXAM MODE':'PRACTICE'}</span><span class="te-timer" id="teTimer"></span>
+  <button class="btn btn-o btn-sm" onclick="confirmSubmit()">Submit Section</button>
+  <a href="tests.html" class="btn btn-sm" style="background:#334155;color:#fff">Exit</a></div></div>
+  <div class="te-wrap"><div class="te-src" id="srcPane">${src}</div><div class="te-q" id="qPane">${qs}</div></div>
+  <div class="qnav" id="qNav"></div>`;
+  document.getElementById('teTimer').textContent='⏱ '+SECS[i].mins+':00';
+  if(s.type==='reading')attachHighlight();
+  if(s.type==='writing'){document.getElementById('essay').addEventListener('input',e=>{const w=e.target.value.trim()?e.target.value.trim().split(/\s+/).length:0;document.getElementById('wCount').textContent=w;answers['w']=e.target.value;});}
+  if(s.type!=='writing')renderNav(s);
+  startTimer();
+}
+
+function qHTML(si,qi,q){
+  const key=si+'-'+qi;let body='';
+  if(q.t==='fib')body=`<input class="inp" style="max-width:280px;margin-top:8px" placeholder="Your answer…" oninput="setAns('${key}',this.value)">`;
+  else body=q.opts.map((o,oi)=>`<div class="opt" id="o-${key}-${oi}" onclick="pick('${key}',${oi},${q.a!==undefined?q.opts.length:0})">${String.fromCharCode(65+oi)}. ${o}</div>`).join('');
+  const hint=MODE==='practice'&&q.hint?`<button class="btn btn-out btn-sm" style="margin-top:10px;font-size:12px" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">🤖 AI Hint</button><div class="hintbox">${q.hint}</div>`:'';
+  return `<div class="qb" id="q-${key}"><b class="qn">${q.q}</b><div class="opts">${body}</div>${hint}</div>`;
+}
+
+function pick(key,oi){answers[key]=oi;
+  const q=SECS[key.split('-')[0]].questions[+key.split('-')[1]];
+  q.opts.forEach((_,i)=>{const el=document.getElementById(`o-${key}-${i}`);if(el)el.classList.toggle('sel',i===oi)});
+  renderNav(SECS[key.split('-')[0]]);}
+function setAns(key,val){answers[key]=val;renderNav(SECS[key.split('-')[0]]);}
+function toggleHL(){hlOn=!hlOn;document.getElementById('hlBtn').textContent='🖍 Highlighter: '+(hlOn?'ON':'OFF');}
+function clearHL(){document.querySelectorAll('#passage mark.hl').forEach(m=>{const t=document.createTextNode(m.textContent);m.parentNode.replaceChild(t,m)})}
+function attachHighlight(){const p=document.getElementById('passage');if(!p)return;
+  p.addEventListener('mouseup',()=>{if(!hlOn)return;const sel=window.getSelection();if(!sel||sel.isCollapsed||sel.toString().length<2)return;
+    try{const m=document.createElement('mark');m.className='hl';sel.getRangeAt(0).surroundContents(m);sel.removeAllRanges();}catch(e){}});}
+
+function renderNav(s){
+  const nav=document.getElementById('qNav');if(!nav||s.type==='writing')return;
+  let html='';s.questions.forEach((_,qi)=>{const key=cur+'-'+qi;const a=answers[key];
+    html+=`<button class="qchip ${a!==undefined&&a!==''?'ans':''}" onclick="jump(${qi})">${qi+1}</button>`});
+  html+=`<span style="margin-left:auto;font-size:12px;color:var(--muted);align-self:center">🟩 answered · ⬜ pending</span>`;
+  nav.innerHTML=html;
+  nav.querySelectorAll('.qchip').forEach((c,i)=>c.classList.toggle('cur',false));
+}
+function jump(qi){const el=document.getElementById('q-'+cur+'-'+qi);if(el)el.scrollIntoView({behavior:'smooth',block:'center'})}
+
+/* ---------- LISTENING AUDIO (browser TTS) ---------- */
+function playListening(){
+  const max=MODE==='exam'?1:3;
+  if(speaking){FE.toast('Already playing');return}
+  if(replays>=max){FE.toast('🔒 No replays left '+(MODE==='exam'?'in exam mode audio plays once':'— upgrade to Pro for unlimited replays'));return}
+  replays++;const rn=document.getElementById('repN');if(rn)rn.textContent=replays;
+  speechSynthesis.cancel();const chunks=SECS[cur].chunks;let i=0;speaking=true;paused=false;
+  const hi=idx=>document.querySelectorAll('#transcript p,[data-ch]').forEach(p=>p.classList.toggle('now',+p.dataset.ch===idx));
+  (function next(){if(!speaking||i>=chunks.length){speaking=false;hi(-1);return}
+    hi(i);const u=new SpeechSynthesisUtterance(chunks[i]);u.rate=0.95;u.onend=()=>{i++;next()};speechSynthesis.speak(u);})();
+  if(!document.getElementById('transcript')||document.getElementById('transcript').style.display==='none'){
+    const tr=document.createElement('div');tr.id='liveChunks';tr.style.cssText='margin-top:14px';tr.innerHTML=chunks.map((c,ci)=>`<p data-ch="${ci}" style="opacity:0;transition:.3s">${c}</p>`).join('');
+    document.getElementById('srcPane').appendChild(tr);
+    const obs=setInterval(()=>{document.querySelectorAll('#liveChunks p').forEach(p=>p.style.opacity=p.classList.contains('now')?'1':'.25');if(!speaking)clearInterval(obs)},300);}
+}
+function pauseAudio(){if(!speaking)return;paused?speechSynthesis.resume():speechSynthesis.pause();paused=!paused;document.getElementById('pauseBtn').textContent=paused?'▶ Resume':'⏸ Pause';}
+function stopAudio(){speaking=false;speechSynthesis.cancel();const lc=document.getElementById('liveChunks');if(lc)lc.remove();}
+
+/* ---------- SUBMIT / GRADE ---------- */
+function confirmSubmit(){if(confirm('Submit this section and continue?'))submitSection(false)}
+function submitSection(auto){
+  clearInterval(timer);speechSynthesis&&speechSynthesis.cancel();
+  const s=SECS[cur];let score=0,total=0,band=0,detail=[];
+  if(s.type==='writing'){
+    const g=FE.gradeEssay(answers['w']||'');band=g.overall;total=9;score=g.overall;
+    detail.push({crit:'Task Response',b:g.TR},{crit:'Coherence & Cohesion',b:g.CC},{crit:'Lexical Resource',b:g.LR},{crit:'Grammatical Range',b:g.GR});
+    if(g.words<250)FE.toast('⚠ Essay was '+g.words+' words — under 250 hurts Task Response');
+  }else{
+    total=s.questions.length;
+    s.questions.forEach((q,qi)=>{const key=cur+'-'+qi;const a=answers[key];
+      let ok=false;
+      if(q.t==='fib'){const norm=v=>String(v||'').toLowerCase().replace(/[.,!?]/g,'').trim();ok=q.accept.some(x=>norm(x)===norm(a));}
+      else ok=a===q.a;
+      if(ok)score++;
+      detail.push({q:q.q,user:q.t==='fib'?a:(a!==undefined?q.opts[a]:'— skipped —'),correct:q.t==='fib'?q.accept[0]:q.opts[q.a],ok,why:q.why});});
+    band=FE.bandFromRaw(score,total);
+  }
+  results.push({name:s.title,score,total,band,type:s.type,detail});
+  FE.setProgress(TID,Math.round(((cur+1)/SECS.length)*100));
+  if(cur+1<SECS.length){FE.toast('✅ Section submitted — '+(auto?'time was up!':'next section loading…'));setTimeout(()=>loadSection(cur+1),900);}
+  else finish();
+}
+
+function finish(){
+  done=true;const overall=Math.round(results.reduce((a,r)=>a+r.band,0)/results.length*2)/2;
+  FE.addResult({test:TID,name:T.name,band:overall,detail:results.map(r=>r.name.split('—')[0].trim()+': '+r.band).join(' · ')});
+  FE.setProgress(TID,100);
+  const me=FE.me();
+  root.innerHTML=`<div style="max-width:760px;margin:0 auto;padding:60px 20px">
+  <div style="text-align:center"><div style="font-size:44px">🎉</div>
+  <h1 style="color:var(--navy)">Test Complete!</h1>
+  <span style="font-size:14px;color:var(--muted)">AI BAND ESTIMATE (±0.5)</span>
+  <div class="price" style="font-size:54px">${overall}</div>
+  ${me?'':'<div class="note" style="text-align:left">💾 <b>Your result was NOT saved to an account</b> (you are a guest). <a href="login.html?next=test.html%3Fid%3D'+TID+'" style="color:var(--orange);font-weight:700">Sign up free</a> to save scores and track progress.</div>'}
+  ${me?'<a href="dashboard.html" class="btn btn-o">View My Dashboard →</a>':'<a href="login.html" class="btn btn-o">Save My Scores — Sign Up</a>'}
+  <a href="tests.html" class="btn btn-out" style="margin-left:8px">More Tests</a></div>
+  <h3 style="color:var(--navy);margin:34px 0 14px">📊 Section Summary</h3>
+  ${results.map(r=>`<div class="rev"><b>${r.name}</b><span style="float:right;font-weight:800;color:${r.band>=7?'var(--green)':r.band>=6?'var(--gold)':'#EF4444'}">Band ${r.band}</span></div>`).join('')}
+  <h3 style="color:var(--navy);margin:30px 0 14px">🔍 Answer Review & AI Explanations</h3>
+  ${results.map(r=>r.type==='writing'?`<div class="rev"><b>${r.name} — AI Criteria</b>${r.detail.map(d=>`<div class="crit" style="margin-top:10px"><div class="cl"><span>${d.crit}</span><b>${d.b}</b></div><div class="pbar"><i style="width:${d.b/9*100}%"></i></div></div>`).join('')}</div>`
+   :r.detail.map((d,di)=>`<div class="rev ${d.ok?'ok':'bad'}"><b>Q${di+1}. ${d.q}</b><br><span style="color:${d.ok?'var(--green)':'#EF4444'}">Your answer: ${FE.esc(String(d.user))} ${d.ok?'✓':'✗'}</span>${d.ok?'':`<br><span style="color:var(--green)">Correct: ${FE.esc(String(d.correct))}</span>`}<br><small style="color:var(--muted)">🤖 ${d.why}</small></div>`).join('')).join('')}
+  </div>`;
+  window.scrollTo({top:0});
+}
+intro();
+}
+</script></body></html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Foreign Express — From IELTS Band 6 to Your Dream Campus</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head><body>
+<div id="site-header"></div>
+<main>
+<section class="hero"><div class="container hero-grid">
+  <div>
+    <h1 id="heroTitle"></h1>
+    <p class="sub">India's only platform where an AI IELTS coach turns your test score into a university shortlist, scholarship estimate and offer letter — all in one account.</p>
+    <ul class="ticks">
+      <li>AI Diagnostic in 15 minutes — free</li>
+      <li>Real test engine: timer, navigator, highlight, audio listening</li>
+      <li>Automatic university shortlist from your score</li>
+      <li>Offer letter in as little as 48 hours</li>
+    </ul>
+    <a href="diagnostic.html"><button class="btn btn-o">Try Free AI Diagnostic →</button></a>
+    &nbsp;<a href="study-abroad.html"><button class="btn btn-out" style="border-color:#fff;color:#fff;background:transparent">Explore Study Abroad</button></a>
+  </div>
+  <div><div class="formcard">
+    <h3>Book your free Consultation</h3><div class="fs">Get your personalised Band Report + country plan in 30 minutes.</div>
+    <div class="field"><label>Full Name*</label><input class="inp" id="lfName" placeholder="Your full name"></div>
+    <div class="field"><label>Email address*</label><input class="inp" id="lfEmail" type="email" placeholder="you@email.com"></div>
+    <div class="field"><label>Phone (WhatsApp)</label><input class="inp" id="lfPhone" placeholder="+91 ·····"></div>
+    <div class="field"><label>Target Country</label><select class="inp" id="lfCountry"><option>United Kingdom</option><option>Canada</option><option>Germany</option><option>Ireland</option><option>Australia</option><option>Dubai (UAE)</option><option>Italy</option><option>Not decided yet</option></select></div>
+    <div class="field"><label>Current IELTS Band</label><select class="inp" id="lfBand"><option>Not taken yet</option><option>Below 5.5</option><option>5.5 – 6.0</option><option>6.5</option><option>7.0+</option></select></div>
+    <label class="check"><input type="checkbox" id="lfAgree"> I have read and agreed to the <a href="terms.html" style="color:var(--orange)">terms</a> &amp; <a href="privacy.html" style="color:var(--orange)">privacy policy</a></label>
+    <button class="btn btn-o btn-full" onclick="submitLead()">GET MY FREE BAND REPORT</button>
+  </div></div>
+</div></section>
+
+<div class="strip"><div class="container" id="statStrip"></div></div>
+
+<section class="section white"><div class="container">
+  <div class="section-t"><h2>Why Choose The Foreign Express?</h2><p>Become a cut above the rest — preparation and admission, finally connected.</p></div>
+  <div class="grid-3">
+    <div class="card"><div class="ico i-o">🤖</div><h4>AI Band Coach</h4><p>Know exactly which skill is pulling your score down and fix it first — with a plan that updates every week.</p></div>
+    <div class="card"><div class="ico i-b">💻</div><h4>Real Test Engine</h4><p>Timer, question navigator, highlight tools and audio listening — 90% identical to computer-based IELTS.</p></div>
+    <div class="card"><div class="ico i-g">🎯</div><h4>Auto University Shortlist</h4><p>Your mock score instantly becomes a list of universities you can realistically get into.</p></div>
+    <div class="card"><div class="ico i-y">💰</div><h4>Scholarship AI</h4><p>See which scholarships you actually qualify for — up to ₹10,00,000 — before you apply.</p></div>
+    <div class="card"><div class="ico i-o">⚡</div><h4>48-Hour Offers</h4><p>Partner universities issue offer letters in as little as two days. No waiting, no chasing.</p></div>
+    <div class="card"><div class="ico i-b">🧳</div><h4>Post-Visa Support</h4><p>Insurance, flights, accommodation, forex — handled even after the visa stamp.</p></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-t"><h2>The Express Flywheel</h2><p>One account. One dashboard. From your first practice question to your boarding pass.</p></div>
+  <div class="fly">
+    <div class="fstep"><div class="cir">1</div><b>Test</b></div><div class="farrow">→</div>
+    <div class="fstep"><div class="cir">2</div><b>Diagnose</b></div><div class="farrow">→</div>
+    <div class="fstep"><div class="cir">3</div><b>Plan</b></div><div class="farrow">→</div>
+    <div class="fstep"><div class="cir">4</div><b>Practice</b></div><div class="farrow">→</div>
+    <div class="fstep"><div class="cir">5</div><b>Match</b></div><div class="farrow">→</div>
+    <div class="fstep"><div class="cir">6</div><b>Fly</b></div>
+  </div>
+</div></section>
+
+<section class="section white"><div class="container">
+  <div class="section-t"><h2>Top Study Destinations</h2><p>Explore our most popular study destinations with comprehensive programs and support.</p></div>
+  <div class="grid-4" id="homeDest"></div>
+  <div style="text-align:center;margin-top:32px"><a href="study-abroad.html" class="btn btn-n">View All Destinations →</a></div>
+</div></section>
+
+<section class="section"><div class="container grid-2" style="align-items:center">
+  <div>
+    <span class="pill">POWERED BY AI</span>
+    <h2 style="color:var(--navy);font-size:29px;margin:14px 0">Practice on a Real Computer-Based IELTS Interface</h2>
+    <p style="color:var(--muted);margin-bottom:16px">Timed sections, question navigation, highlight & note tools, and Listening tests with real audio playback — with an AI assistant explaining every "why" in Practice Mode.</p>
+    <ul class="ticks" style="margin-bottom:22px">
+      <li>Realistic interface with timer & navigator</li><li>Step-by-step AI explanations</li>
+      <li>Keyword highlighting & instant scoring</li><li>Practice Mode and Exam Simulation Mode</li>
+    </ul>
+    <a href="tests.html"><button class="btn btn-n">Browse the Test Library →</button></a>
+  </div>
+  <div class="tui">
+    <div class="tbar"><span>📑 Section 1 of 3 — Reading Passage 1</span><span class="timer">⏱ 18:42</span></div>
+    <div class="tbody">
+      <div class="qp"><b>Questions 1–3.</b> The growth of cities was driven largely by <i style="background:#FEF08A;padding:0 4px;border-radius:3px">migration</i> from rural areas…</div>
+      <div class="opt sel">A. migration ✔</div><div class="opt">B. industrialisation</div><div class="opt">C. agriculture</div>
+      <div class="ai">🤖 <b>AI Assistant:</b> The keyword "driven largely by" signals a cause. "Workers moved to cities" is a paraphrase of <i>migration</i>.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section white"><div class="container" style="text-align:center;max-width:760px">
+  <div class="section-t" style="margin-bottom:22px"><h2>Free AI Writing Checker</h2><p>Paste your Task 2 essay. Get a band estimate + criterion-by-criterion feedback in seconds.</p></div>
+  <a href="writing-checker.html"><button class="btn btn-o" style="font-size:16px;padding:14px 34px">✍ Check My Essay — Free</button></a>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-t"><h2>Success Stories</h2><p>Real students. Real transformations.</p></div>
+  <div class="grid-3" id="homeStories"></div>
+  <div style="text-align:center;margin-top:28px"><a href="stories.html" class="btn btn-out">Read All Stories</a></div>
+</div></section>
+
+<section class="section white"><div class="container" style="max-width:800px">
+  <div class="section-t"><h2>Frequently Asked Questions</h2><p>Find answers to common questions about our programmes and services.</p></div>
+  <div id="faqHome"></div>
+</div></section>
+
+<div class="ctastrip"><div class="container"><h2>Still Confused?</h2><p style="margin-bottom:22px;opacity:.95">Book a free 30-min session with a study abroad expert and get started today.</p><a href="contact.html"><button class="btn" style="background:#fff;color:var(--orange);font-size:16px;padding:14px 32px">Talk to an Expert</button></a></div></div>
+</main>
+<div id="site-footer"></div>
+<div id="toast"></div>
+<script src="js/app.js"></script>
+<script>
+function submitLead(){
+  const n=FE.lid('lfName'),e=FE.lid('lfEmail');
+  const name=document.getElementById('lfName').value.trim(),email=document.getElementById('lfEmail').value.trim();
+  if(!name||!email){FE.toast('⚠ Please fill your name and email');return}
+  if(!document.getElementById('lfAgree').checked){FE.toast('⚠ Please accept the terms to continue');return}
+  FE.saveLead('Homepage form',{name,email,phone:document.getElementById('lfPhone').value,country:document.getElementById('lfCountry').value,band:document.getElementById('lfBand').value});
+  FE.toast('✅ Thank you '+name.split(' ')[0]+'! Your Band Report request is in. Our expert will call within 24 hrs.');
+}
+FE.renderHero('heroTitle');FE.renderStats('statStrip');FE.renderDests('homeDest');FE.renderStories('homeStories',3);FE.renderFAQs('faqHome');
+</script></body></html>
